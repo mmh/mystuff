@@ -1,0 +1,15 @@
+
+# Just redirect / to somewhere else
+RewriteEngine On
+RewriteRule ^/$ http://mmh.dk/whatever.html
+
+# Using Redirect
+Redirect / http://mmh.dk/whatever.html
+
+# Include the old URI in the redirect
+RewriteEngine On
+RewriteRule ^(.*)$ http://www.mmh.dk/$1 [L,R]
+
+
+
+
