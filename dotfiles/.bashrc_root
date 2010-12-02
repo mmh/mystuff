@@ -1,0 +1,56 @@
+
+export PS1='\h:\w\$ '
+umask 002
+
+# You may uncomment the following lines if you want `ls' to be colorized:
+export LS_OPTIONS='--color=auto'
+eval "`dircolors`"
+alias ls='ls $LS_OPTIONS'
+alias ll='ls $LS_OPTIONS -l'
+alias l='ls $LS_OPTIONS -lA'
+#
+# Some more alias to avoid making mistakes:
+alias rm='rm -i'
+alias cp='cp -i'
+alias mv='mv -i'
+
+# huge history ftw
+export HISTSIZE=20000
+export HISTFILESIZE=200000
+
+# color grep
+alias grep='grep --color=auto'
+alias chown='chown --preserve-root'
+alias chmod='chmod --preserve-root'
+alias cd..='cd ..'
+alias cd...='cd ../..'
+alias cd....='cd ../../..'
+alias svn='colorsvn'
+alias svnd='svn diff --diff-cmd=colordiff'
+alias svndiff='svnd'
+alias lsdiff='echo "diff -u <(ls -c1 dir_1) <(ls -c1 dir_2)"'
+
+function maildone {
+ echo "Something at $HOSTNAME is DONE" | mail -s DONE sysadmin-donescript@bellcom.dk
+}
+
+alias sites='apache2ctl -S 2>&1 | grep port | cut -d \  -f 13-20'
+alias sites-all="egrep 'ServerAlias|ServerName' /etc/apache2/sites-enabled/* | grep -v '#' |  cut -d : -f 2-10"
+
+function myip {
+  INTIP=`/sbin/ifconfig | egrep -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+' | grep -v "\(^127\|255\)"`
+  EXTIP=`wget -q http://checkip.dyndns.org/ -O - | egrep -o '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+'`
+  echo "Internal ip: ${INTIP}"
+  echo "External ip: ${EXTIP}"
+}
+
+function space {
+  du -sk ./* | sort -n | awk 'BEGIN{ pref[1]="K"; pref[2]="M"; pref[3]="G";} { total = total + $1; x = $1; y = 1; while( x > 1024 ) { x = (x + 1023)/1024; y++; } printf("%g%s\t%s\n",int(x*10)/10,pref[y],$2); } END { y = 1; while( total > 1024 ) { total = (total + 1023)/1024; y++; } printf("Total: %g%s\n",int(total*10)/10,pref[y]); }'
+}
+
+function activity {
+  LOGFILES=`egrep '[^\ ]*CustomLog' /etc/apache2/sites-enabled/* | sed -e 's/.*CustomLog\ //g' | sed -e 's/\ .*//g'`
+  LOGFILES_ONE_LINE=`for i in $LOGFILES;do echo -n $i " ";done`
+  tail -f $LOGFILES_ONE_LINE
+}
+
