@@ -8,8 +8,9 @@ Redirect / http://mmh.dk/whatever.html
 
 # Include the old URI in the redirect
 RewriteEngine On
-RewriteRule ^(.*)$ http://www.mmh.dk/$1 [L,R]
-
+#RewriteRule ^(.*)$ http://www.mmh.dk/$1 [L,R]
+RewriteRule ^(.*)$ http://www.mmh.dk$1 [L,R]
+RewriteRule ^(.*) http://www.mmh.dk$1 [L,R]
 
 
 
