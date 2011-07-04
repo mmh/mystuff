@@ -1,0 +1,5 @@
+# start dump af en bestemt port
+tcpdump -vvvv port <port> -s 0 -w tcpdump.log
+
+# åben bagefter i wireshark for at følge tcp stream
+

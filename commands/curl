@@ -1,0 +1,2 @@
+# POST from commandline
+curl -d "param1=value1&param2=value2" http://whatever.com/file.php
