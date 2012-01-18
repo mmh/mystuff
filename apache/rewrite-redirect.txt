@@ -13,4 +13,14 @@ RewriteRule ^(.*)$ http://www.mmh.dk$1 [L,R]
 RewriteRule ^(.*) http://www.mmh.dk$1 [L,R]
 
 
+RewriteCond %{HTTP_HOST} ^example\.com$ [NC]
+RewriteRule ^(.*)$ http://www.example.com/$1 [L,R=301]
+
+# remove index.php from urls
+RewriteRule ^/index.php(.*) http://www.sik.dk$1 [L,R=301]
+
+# redirect without the query string (add ?)
+RewriteEngine On
+RewriteRule ^/(.*)$ http://sdm.dk/annoncering/? [R,L]
+
 
