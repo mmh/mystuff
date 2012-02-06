@@ -1,0 +1,2 @@
+higher key_buffer
+http://linuxadminzone.com/speed-up-large-mysql-backup-dump-restore-process/

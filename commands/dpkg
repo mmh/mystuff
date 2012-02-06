@@ -1,0 +1,5 @@
+# lidt installed packages by size
+dpkg-query -Wf '${Installed-Size}\t${Package}\n' | sort -n
+# lidt then purge all uninstalled packages
+dpkg -l | grep ^rc
+dpkg -l | grep ^rc | awk '{print $2}' | xargs dpkg --purge

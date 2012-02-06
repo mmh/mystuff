@@ -87,6 +87,10 @@ function unixtime_to_date {
  date -d @$1
 }
 
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -104,10 +108,10 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 # from http://www.webupd8.org/2010/11/alternative-to-200-lines-kernel-patch.html
-if [ "$PS1" ] ; then 
-  mkdir -m 0700 /dev/cgroup/cpu/user/$$
-  echo $$ > /dev/cgroup/cpu/user/$$/tasks
-fi
+#if [ "$PS1" ] ; then 
+#  mkdir -m 0700 /dev/cgroup/cpu/user/$$
+#  echo $$ > /dev/cgroup/cpu/user/$$/tasks
+#fi
 
 
 

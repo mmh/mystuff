@@ -1,0 +1,4 @@
+Kræver at maxmem er sat i domU config filen
+
+Fra dom0
+xm mem-set <domU-id> 102
