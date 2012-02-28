@@ -1,0 +1,2 @@
+Use referer
+wget --referer=www.google.com <url>

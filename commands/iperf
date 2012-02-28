@@ -1,0 +1,5 @@
+measure network speed
+host1:
+iperf -s
+host2:
+iperf -c <host1>
