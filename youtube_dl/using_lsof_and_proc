@@ -1,0 +1,7 @@
+lsof | grep -i deleted
+
+som giver en liste af file descriptors, der er åbne, hvor den tilhørende fil er slettet. Videofiler, flash har åbne, kan man så kopiere ud med ganske almindelig
+
+cp /proc/$(Flash PID)/fd/<nummer> <filnavn>
+
+mens flash stadig har filen åben.
