@@ -1,0 +1,4 @@
+if ($_SERVER["REMOTE_ADDR"]=='90.185.183.84') {
+   error_log(__LINE__.':'.__FILE__.' $object = ' . print_r($object,1));
+}
+

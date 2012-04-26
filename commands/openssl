@@ -1,0 +1,5 @@
+# Self signed in .pem format. Remember days
+openssl req $@ -new -x509 -days 365 -nodes -out /etc/apache2/ssl/apache.pem -keyout /etc/apache2/ssl/apache.pem 
+
+SSLEngine on
+SSLCertificateFile /etc/apache2/ssl/apache.pem

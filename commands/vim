@@ -1,0 +1,2 @@
+remove all exess whitespaces at the end of all lines
+:%s/ \+$//g

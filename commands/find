@@ -1,0 +1,4 @@
+
+# find files older that 30 days and delete them
+find . -mtime +30 -exec rm -al {} \;
+

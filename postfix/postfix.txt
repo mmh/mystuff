@@ -1,0 +1,20 @@
+Config
+* postconf # list current config
+
+Queue
+Delete all from user@domain.com:
+* postqueue -p | awk ‘BEGIN { RS = “” } { if ($7 == “user@domain.com” )
+print $1 }’ | tr -d ‘!*’ | postsuper -d -
+
+* postqueue -p    # show current queue
+* postcat -q <ID> # show contents of mail with <ID>
+
+Links
+http://postfixwiki.org/
+
+Addons
+http://www.postfix.org/addon.html
+
+Performance
+http://www.postfix.org/TUNING_README.html
+http://wiki.list.org/display/DOC/MTA+Performance+Tuning+Tips+for+Postfix

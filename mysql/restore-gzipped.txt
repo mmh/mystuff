@@ -1,0 +1,1 @@
+gunzip < fil.sql.gz | mysql -u dbuser -p db
