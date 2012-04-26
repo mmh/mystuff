@@ -6,6 +6,12 @@ RewriteRule ^/$ http://mmh.dk/whatever.html
 # Using Redirect
 Redirect / http://mmh.dk/whatever.html
 
+# Redirect wont work to redirect something with a query string - like:
+# Redirect 301 /catalog/index.php?cPath=332 /4-ventetoj # <- wont work
+# Use ModRewrite instead
+RewriteCond %{QUERY_STRING} ^cPath=233&products_id=2572$
+RewriteRule ^/catalog\/product_info.php$ /amme-bh/100-amme-bh-plus-plus.html? [R=301,L]
+
 # Include the old URI in the redirect
 RewriteEngine On
 #RewriteRule ^(.*)$ http://www.mmh.dk/$1 [L,R]
@@ -17,10 +23,16 @@ RewriteCond %{HTTP_HOST} ^example\.com$ [NC]
 RewriteRule ^(.*)$ http://www.example.com/$1 [L,R=301]
 
 # remove index.php from urls
-RewriteRule ^/index.php(.*) http://www.sik.dk$1 [L,R=301]
+RewriteRule ^/index.php(.*) http://www.example.dk$1 [L,R=301]
 
 # redirect without the query string (add ?)
 RewriteEngine On
-RewriteRule ^/(.*)$ http://sdm.dk/annoncering/? [R,L]
+RewriteRule ^/(.*)$ http://example.dk/annoncering/? [R,L]
+
+# force SSL/HTTPS
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+
 
 

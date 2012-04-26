@@ -1,2 +1,5 @@
 Use referer
 wget --referer=www.google.com <url>
+
+User agent
+wget -S --user-agent="Mozilla/4.0..." <url>

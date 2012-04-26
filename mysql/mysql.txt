@@ -4,3 +4,5 @@ CREATE DATABASE <db>
 Create user
 GRANT ALL PRIVILEGES ON <db>.* TO '<bruger>'@'localhost' IDENTIFIED BY '<password>'  WITH GRANT OPTION;
 
+
+
